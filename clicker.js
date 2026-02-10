@@ -21,6 +21,11 @@ upgrade.addEventListener("click", function () {
         clickpower += 1;
         costnum += 10;
         costnum *= 1.2;
+        costnum = Math.floor(costnum)
         cost.textContent = "Cost: " + Math.floor(costnum)
     }
 });
+setTimeout(() => {
+    counter += 1;
+    count.textContent = counter;
+}, 1000);
