@@ -10,19 +10,20 @@ cost2.textContent = "Cost: 100"
 let counter = 0;
 let costnum = 30;
 let costnum2 = 100;
-let clickpower = 1;
+let clickpower = 10;
 let cps = 0;
+
 button.addEventListener("click", function () {
     
     counter += clickpower;
-    count.textContent = counter;
+    count.textContent = counter.toFixed(1);
     
 
 });
 upgrade.addEventListener("click", function () {
     if (counter >= costnum) {
         counter -= Math.floor(costnum);
-        count.textContent = counter;
+        count.textContent = counter.toFixed(1);
         clickpower += 1;
         costnum += 10;
         costnum *= 1.4;
@@ -33,7 +34,7 @@ upgrade.addEventListener("click", function () {
 upgrade2.addEventListener("click", function () {
 if (counter >= costnum2) {
     counter -= Math.floor(costnum2)
-    count.textContent = counter; 
+    count.textContent = counter.toFixed(1); 
     cps += 1;
     costnum2 += 50;
     costnum2 *= 1.2;
@@ -43,6 +44,7 @@ if (counter >= costnum2) {
 
 
 setInterval(() => {
-        counter += cps;
-        count.textContent = counter;
-    }, 1000);
+        counter += cps / 10;
+        count.textContent = counter.toFixed(1);;
+        
+    }, 100);
