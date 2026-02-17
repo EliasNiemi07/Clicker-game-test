@@ -10,7 +10,7 @@ cost2.textContent = "Cost: 100"
 let counter = 0;
 let costnum = 30;
 let costnum2 = 100;
-let clickpower = 10;
+let clickpower = 1;
 let cps = 0;
 button.addEventListener("click", function () {
     
