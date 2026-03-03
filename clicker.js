@@ -10,26 +10,27 @@ const upgrade4 = document.querySelector("#upgrade4")
 const upgrade4div = document.querySelector("#upgrade4div")
 const clickdisp = document.querySelector("#click")
 const cpsdisp = document.querySelector("#cps")
-upgrade.textContent = "Click +1";
-upgrade2.textContent = "CPS +1";
+upgrade.textContent = "Click + 1";
+upgrade2.textContent = "CPS + 1";
 count.textContent = "0";
 cost.textContent = "Cost: 30";
 cost2.textContent = "Cost: 50";
 clickdisp.textContent = "Clickpower: 1";
 cpsdisp.textContent = "CPS: 0"
-let counter = 0;
+let counter = 5000;
 let costnum = 30; // click upgrade
 let costnum2 = 50; // cps upgrade
 let costnum3 = 200; // upgrade 1
 let costnum4 = 400; // upgrade 2
 let clickpower = 1;
-let clickgiver = 1;
+let clickgiver = 0;
 let cps = 0;
 let cpsgiver = 0;
+let upgradescale = clickpower + clickgiver;
 
 button.addEventListener("click", function () {
     
-    counter += clickpower * clickgiver;
+    counter += clickpower + clickgiver;
     count.textContent = counter.toFixed(1);
     
 
@@ -39,11 +40,14 @@ upgrade.addEventListener("click", function () {
         counter -= Math.floor(costnum);
         count.textContent = counter.toFixed(1);
         clickpower += 1;
+        clickgiver += 0.1;
+        upgradescale = clickpower + clickgiver;
         costnum += 10;
-        costnum *= 1.4;
+        costnum *= 1.2;
         costnum = Math.floor(costnum)
-        cost.textContent = "Cost: " + costnum
-        clickdisp.textContent = "Clickpower: " + clickpower * clickgiver
+        cost.textContent = "Cost: " + costnum;
+        clickdisp.textContent = "Clickpower: " + upgradescale;
+        upgrade.textContent = "Click + " + clickgiver.toFixed(1);
     }
 });
 upgrade2.addEventListener("click", function () {
@@ -81,7 +85,7 @@ upgrade4.addEventListener("click", function () {
         upgrade4div.classList.add("remove")
         clickpower *2;
         clickgiver += 1;
-        clickdisp.textContent = "Clickpower: " + clickpower * clickgiver
-        upgrade4.textContent = "CPS +2"
+        clickdisp.textContent = "Clickpower: " + clickpower
+        upgrade.textContent = "Click + " + clickpower
         
 }});
