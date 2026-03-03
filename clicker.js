@@ -23,14 +23,14 @@ let costnum2 = 50; // cps upgrade
 let costnum3 = 200; // upgrade 1
 let costnum4 = 400; // upgrade 2
 let clickpower = 1;
-let clickgiver = 0;
+let clickbonus = 0;
+let clickmult = 1;
 let cps = 0;
 let cpsgiver = 0;
-let upgradescale = clickpower + clickgiver;
-
+let upgradescale = clickpower + clickbonus;
 button.addEventListener("click", function () {
     
-    counter += clickpower + clickgiver;
+    counter += (clickpower + clickbonus) * clickmult;
     count.textContent = counter.toFixed(1);
     
 
@@ -40,14 +40,16 @@ upgrade.addEventListener("click", function () {
         counter -= Math.floor(costnum);
         count.textContent = counter.toFixed(1);
         clickpower += 1;
-        clickgiver += 0.1;
-        upgradescale = clickpower + clickgiver;
+        clickbonus += 0.1;
+        upgradescale = clickpower + clickbonus;
         costnum += 10;
         costnum *= 1.2;
         costnum = Math.floor(costnum)
         cost.textContent = "Cost: " + costnum;
-        clickdisp.textContent = "Clickpower: " + upgradescale;
-        upgrade.textContent = "Click + " + clickgiver.toFixed(1);
+        clickdisp.textContent = "Clickpower: " + upgradescale.toFixed(1);
+        upgrade.textContent = "Click + " + clickbonus.toFixed(1);
+        console.log(clickgiver)
+        console.log(clickbonus)
     }
 });
 upgrade2.addEventListener("click", function () {
@@ -83,8 +85,8 @@ upgrade4.addEventListener("click", function () {
     if (counter >= costnum4) {
         counter -= costnum4;
         upgrade4div.classList.add("remove")
-        clickpower *2;
-        clickgiver += 1;
+        clickmult += 2;
+        clickpower *= 2;
         clickdisp.textContent = "Clickpower: " + clickpower
         upgrade.textContent = "Click + " + clickpower
         
