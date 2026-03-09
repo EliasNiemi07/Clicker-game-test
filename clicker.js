@@ -24,6 +24,7 @@ let costnum3 = 200; // upgrade 1
 let costnum4 = 400; // upgrade 2
 let clickpower = 1;
 let clickbonus = 0;
+let bonusinc = 0.1;
 let clickmult = 1;
 let cps = 0;
 let cpsbonus = 0;
@@ -32,7 +33,7 @@ let upgradescale = 0;
 let clicktotal = (clickpower + clickbonus) * clickmult;
 button.addEventListener("click", function () {
     
-    counter += (clickpower + clickbonus) * clickmult;
+    counter += clicktotal;
     count.textContent = counter.toFixed(1);
     
 
@@ -42,7 +43,9 @@ upgrade.addEventListener("click", function () {
         counter -= Math.floor(costnum);
         count.textContent = counter.toFixed(1);
         clickpower += 1;
-        clickbonus += 0.1;
+        clickbonus += bonusinc;
+        bonusinc += 0.1;
+        clicktotal = (clickpower + clickbonus) * clickmult;
         upgradescale = 1 + clickbonus;
         costnum += 10;
         costnum *= 1.2;
@@ -53,7 +56,7 @@ upgrade.addEventListener("click", function () {
         console.log(clicktotal)
         console.log(clickpower)
         console.log(clickbonus)
-        console.log
+        console.log(bonusinc)
     }
 });
 upgrade2.addEventListener("click", function () {
